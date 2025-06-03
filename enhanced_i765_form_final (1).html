@@ -1,0 +1,1929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form I-765 Client Intake - Smotritsky Law Group</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Source Sans Pro', Arial, sans-serif;
+            max-width: 8.5in;
+            margin: 0 auto;
+            padding: 0.75in;
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            color: #2c3e50;
+            line-height: 1.6;
+            font-size: 11pt;
+        }
+        
+        .document-container {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            overflow: hidden;
+            border: 1px solid #e8eef7;
+        }
+        
+        .firm-header {
+            background: linear-gradient(135deg, #1a365d 0%, #2c5282 50%, #3182ce 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .firm-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.03)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.03)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.02)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .firm-contact-info {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+        
+        .firm-name-simple {
+            font-size: 28px;
+            font-family: 'Playfair Display', serif;
+            color: white;
+            margin-bottom: 12px;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        
+        .firm-address {
+            font-size: 16px;
+            color: #d4a631;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+        
+        .firm-city {
+            font-size: 16px;
+            color: #d4a631;
+            font-weight: 500;
+        }
+        
+        .form-header {
+            background: linear-gradient(to right, #f7fafc, #edf2f7);
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 3px solid #d4a631;
+        }
+        
+        .form-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            color: #1a365d;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        
+        .form-subtitle {
+            font-size: 16px;
+            color: #4a5568;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+        
+        .instruction-notice {
+            background: linear-gradient(135deg, #e6fffa 0%, #b2f5ea 100%);
+            color: #234e52;
+            padding: 15px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 13px;
+            text-align: left;
+            border: 1px solid #81e6d9;
+            margin-top: 1rem;
+        }
+        
+        .confidential-notice {
+            background: linear-gradient(135deg, #fed7d7 0%, #feb2b2 100%);
+            color: #742a2a;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 12px;
+            text-align: center;
+            border: 1px solid #fc8181;
+            margin-top: 1rem;
+        }
+        
+        .form-content {
+            padding: 2.5rem;
+        }
+        
+        .section {
+            margin-bottom: 2.5rem;
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+            position: relative;
+        }
+        
+        .section.pre-filled {
+            background: linear-gradient(135deg, #f0fff4 0%, #f0fff4 100%);
+            border-left: 5px solid #48bb78;
+        }
+        
+        .section.client-complete {
+            background: linear-gradient(135deg, #fffaf0 0%, #fffaf0 100%);
+            border-left: 5px solid #ed8936;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 18px;
+            color: #1a365d;
+            margin-bottom: 1.5rem;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #d4a631;
+            position: relative;
+            margin-left: 1rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 30%;
+            height: 2px;
+            background: #1a365d;
+        }
+        
+        .section-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-left: 15px;
+        }
+        
+        .badge-verify {
+            background: #c6f6d5;
+            color: #276749;
+        }
+        
+        .badge-complete {
+            background: #ffd6cc;
+            color: #c05621;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            align-items: flex-end;
+        }
+        
+        .form-group {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .form-group.full-width {
+            width: 100%;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 8px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .form-label .russian {
+            color: #718096;
+            font-weight: 400;
+            text-transform: none;
+            letter-spacing: normal;
+        }
+        
+        .input-field {
+            width: 100%;
+            height: 35px;
+            border: none;
+            border-bottom: 2px solid #e2e8f0;
+            background: transparent;
+            padding: 8px 0;
+            font-size: 14px;
+            color: #2d3748;
+            transition: border-color 0.3s ease;
+            position: relative;
+        }
+        
+        .input-field.pre-filled {
+            background: #f0fff4;
+            border-bottom-color: #48bb78;
+            font-weight: 500;
+        }
+        
+        .input-field:focus {
+            outline: none;
+            border-bottom-color: #d4a631;
+        }
+        
+        .input-field::placeholder {
+            color: #a0aec0;
+            font-style: italic;
+        }
+        
+        .input-field.error {
+            border-bottom-color: #e53e3e;
+            background-color: #fed7d7;
+        }
+        
+        .input-field.success {
+            border-bottom-color: #38a169;
+            background-color: #f0fff4;
+        }
+        
+        .field-instruction {
+            font-size: 11px;
+            color: #718096;
+            margin-top: 4px;
+            font-style: italic;
+        }
+        
+        .verify-instruction {
+            color: #276749;
+            font-weight: 500;
+        }
+        
+        .complete-instruction {
+            color: #c05621;
+            font-weight: 500;
+        }
+        
+        .error-instruction {
+            color: #e53e3e;
+            font-weight: 500;
+        }
+        
+        .success-instruction {
+            color: #38a169;
+            font-weight: 500;
+        }
+        
+        .checkbox-section {
+            background: #f7fafc;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .checkbox-question {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 1rem;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .checkbox-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: background-color 0.2s ease;
+        }
+        
+        .checkbox-option:hover {
+            background: rgba(212, 166, 49, 0.1);
+        }
+        
+        .checkbox {
+            width: 18px;
+            height: 18px;
+            border: 2px solid #cbd5e0;
+            border-radius: 4px;
+            background: white;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+        
+        .checkbox.checked {
+            background: #d4a631;
+            border-color: #d4a631;
+        }
+        
+        .checkbox.checked::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .checkbox-label {
+            font-weight: 500;
+            color: #4a5568;
+            font-size: 14px;
+        }
+        
+        .text-area {
+            width: 100%;
+            min-height: 80px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 13px;
+            color: #2d3748;
+            resize: vertical;
+            transition: border-color 0.3s ease;
+            margin-top: 8px;
+            background: #fafafa;
+        }
+        
+        .text-area:focus {
+            outline: none;
+            border-color: #d4a631;
+            background: white;
+        }
+        
+        .text-area.error {
+            border-color: #e53e3e;
+            background-color: #fed7d7;
+        }
+        
+        .signature-section {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-top: 3rem;
+            border: 2px solid #e2e8f0;
+        }
+        
+        .certification-text {
+            color: #2d3748;
+            font-size: 13px;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 8px;
+            border-left: 4px solid #d4a631;
+            font-weight: 500;
+        }
+        
+        .signature-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+        
+        .signature-field {
+            flex: 1;
+        }
+        
+        .button-section {
+            text-align: center;
+            margin-top: 2.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #d4a631 0%, #b7941f 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(212, 166, 49, 0.3);
+        }
+        
+        .btn-primary:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 166, 49, 0.4);
+        }
+        
+        .btn-primary:disabled {
+            background: #cbd5e0;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(74, 85, 104, 0.3);
+        }
+        
+        .btn-secondary:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(74, 85, 104, 0.4);
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: #e2e8f0;
+            border-radius: 2px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #d4a631, #b7941f);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        .validation-summary {
+            background: #fed7d7;
+            border: 1px solid #fc8181;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            display: none;
+        }
+        
+        .validation-summary.show {
+            display: block;
+        }
+        
+        .validation-summary h4 {
+            color: #742a2a;
+            margin-bottom: 0.5rem;
+        }
+        
+        .validation-summary ul {
+            color: #742a2a;
+            margin-left: 1rem;
+        }
+        
+        .status-indicator {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 12px;
+            font-weight: 600;
+            z-index: 1000;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+        
+        .status-indicator.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .status-indicator.success {
+            background: #48bb78;
+            color: white;
+        }
+        
+        .status-indicator.error {
+            background: #e53e3e;
+            color: white;
+        }
+        
+        .status-indicator.info {
+            background: #3182ce;
+            color: white;
+        }
+        
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+        
+        .loading-overlay.show {
+            display: flex;
+        }
+        
+        .loading-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #d4a631;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .three-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .date-field {
+            max-width: 200px;
+        }
+        
+        .footer-notice {
+            text-align: center;
+            font-size: 10px;
+            color: #718096;
+            margin-top: 2rem;
+            padding: 1rem;
+            background: #f7fafc;
+            border-radius: 8px;
+            font-style: italic;
+        }
+        
+        @media print {
+            body {
+                background: white !important;
+                padding: 0.5in !important;
+                font-size: 11pt !important;
+            }
+            
+            .document-container {
+                box-shadow: none !important;
+                border: none !important;
+                background: white !important;
+            }
+            
+            .btn, .status-indicator, .progress-bar, .validation-summary, .loading-overlay {
+                display: none !important;
+            }
+            
+            .button-section {
+                display: none !important;
+            }
+            
+            .section {
+                page-break-inside: avoid;
+                margin-bottom: 1rem !important;
+            }
+            
+            .signature-section {
+                page-break-inside: avoid;
+            }
+            
+            .firm-header {
+                background: #1a365d !important;
+                -webkit-print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+            
+            .input-field {
+                border-bottom: 1px solid #000 !important;
+                background: transparent !important;
+            }
+            
+            .checkbox.checked {
+                background: #000 !important;
+                -webkit-print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+            
+            @page {
+                margin: 0.75in;
+                size: letter;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 0.5rem;
+                font-size: 10pt;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .three-column {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .signature-row {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .checkbox-group {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .firm-name-simple {
+                font-size: 24px;
+            }
+            
+            .form-title {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="status-indicator" id="statusIndicator"></div>
+    
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <div>Processing your submission...</div>
+            <div style="font-size: 11px; margin-top: 0.5rem; color: #718096;">Please wait while we securely process your form</div>
+        </div>
+    </div>
+    
+    <div class="document-container">
+        <div class="firm-header">
+            <div class="firm-contact-info">
+                <div class="firm-name-simple"><strong>Smotritsky Law Group</strong></div>
+                <div class="firm-address"><strong>305 Broadway Ste 210</strong></div>
+                <div class="firm-city"><strong>New York, NY 10007</strong></div>
+            </div>
+        </div>
+
+        <div class="form-header">
+            <h1 class="form-title">Form I-765 Client Intake Questionnaire</h1>
+            <h2 class="form-subtitle">Application for Employment Authorization Document</h2>
+            
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            
+            <div class="instruction-notice">
+                <strong>INSTRUCTIONS FOR CLIENT / ИНСТРУКЦИИ ДЛЯ КЛИЕНТА:</strong><br>
+                • <span style="color:#276749;"><strong>GREEN sections</strong></span> contain information pre-filled by our office. Please VERIFY accuracy and notify us of any corrections needed.<br>
+                • <span style="color:#c05621;"><strong>ORANGE sections</strong></span> require your completion. Please fill out all fields completely and accurately.<br><br>
+                • <span style="color:#276749;"><strong>ЗЕЛЕНЫЕ разделы</strong></span> содержат информацию, заполненную нашим офисом. Пожалуйста, ПРОВЕРЬТЕ точность и сообщите нам о необходимых исправлениях.<br>
+                • <span style="color:#c05621;"><strong>ОРАНЖЕВЫЕ разделы</strong></span> требуют вашего заполнения. Пожалуйста, заполните все поля полностью и точно.
+            </div>
+            
+            <div class="confidential-notice">
+                <strong>CONFIDENTIAL ATTORNEY-CLIENT COMMUNICATION</strong><br>
+                Please complete all sections accurately and legibly in English using block letters
+            </div>
+        </div>
+
+        <div class="form-content">
+            <div class="validation-summary" id="validationSummary">
+                <h4>Please correct the following errors:</h4>
+                <ul id="validationList"></ul>
+            </div>
+            
+            <!-- PRE-FILLED SECTION -->
+            <div class="section pre-filled">
+                <div class="section-title">
+                    Personal Information / Личная информация
+                    <span class="section-badge badge-verify">Please Verify / Проверьте</span>
+                </div>
+                
+                <div class="three-column">
+                    <div class="form-group">
+                        <label class="form-label">Last Name / <span class="russian">Фамилия</span></label>
+                        <input type="text" class="input-field pre-filled" data-field="lastName" data-required="true" value="">
+                        <div class="field-instruction verify-instruction">Pre-filled by attorney - Please verify</div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">First Name / <span class="russian">Имя</span></label>
+                        <input type="text" class="input-field pre-filled" data-field="firstName" data-required="true" value="">
+                        <div class="field-instruction verify-instruction">Pre-filled by attorney - Please verify</div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Middle Name</label>
+                        <input type="text" class="input-field pre-filled" data-field="middleName" value="">
+                        <div class="field-instruction verify-instruction">Pre-filled by attorney - Please verify</div>
+                    </div>
+                </div>
+                
+                <div class="form-group full-width">
+                    <label class="form-label">Other names used (including maiden name) / <span class="russian">Другие используемые имена (включая девичью фамилию)</span></label>
+                    <input type="text" class="input-field pre-filled" data-field="otherNames" value="">
+                    <div class="field-instruction verify-instruction">Pre-filled by attorney - Please verify or complete if additional names</div>
+                </div>
+            </div>
+
+            <!-- CLIENT COMPLETION SECTION -->
+            <div class="section client-complete">
+                <div class="section-title">
+                    Address in the United States / Адрес в США
+                    <span class="section-badge badge-complete">Please Complete / Заполните</span>
+                </div>
+                
+                <div class="form-group full-width">
+                    <label class="form-label">Street Address and Number / <span class="russian">Адрес и номер дома</span></label>
+                    <input type="text" class="input-field" data-field="streetAddress" data-required="true" placeholder="Enter your current street address">
+                    <div class="field-instruction complete-instruction">Please provide your current residential address</div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Apartment/Unit / <span class="russian">Квартира</span></label>
+                        <input type="text" class="input-field" data-field="apartment" placeholder="Apt/Unit #">
+                        <div class="field-instruction complete-instruction">If applicable</div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">City / <span class="russian">Город</span></label>
+                        <input type="text" class="input-field" data-field="city" data-required="true" placeholder="City name">
+                        <div class="field-instruction complete-instruction">Required</div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">State / <span class="russian">Штат</span></label>
+                        <input type="text" class="input-field" data-field="state" data-required="true" placeholder="State">
+                        <div class="field-instruction complete-instruction">Required</div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">ZIP Code / <span class="russian">Почтовый индекс</span></label>
+                        <input type="text" class="input-field" data-field="zipCode" data-required="true" placeholder="ZIP code">
+                        <div class="field-instruction complete-instruction">Required</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PRE-FILLED SECTION -->
+            <div class="section pre-filled">
+                <div class="section-title">
+                    Birth and Citizenship Information / Информация о рождении и гражданстве
+                    <span class="section-badge badge-verify">Please Verify / Проверьте</span>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Date of Birth (MM/DD/YYYY) / <span class="russian">Дата рождения (ММ/ДД/ГГГГ)</span></label>
+                        <input type="text" class="input-field pre-filled" data-field="dateOfBirth" data-required="true" value="" placeholder="MM/DD/YYYY">
+                        <div class="field-instruction verify-instruction">Pre-filled by attorney - Please verify format MM/DD/YYYY</div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Country of Birth / <span class="russian">Страна рождения</span></label>
+                        <input type="text" class="input-field pre-filled" data-field="countryOfBirth" data-required="true" value="">
+                        <div class="field-instruction verify-instruction">Pre-filled by attorney - Please verify</div>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Citizenship/Nationality / <span class="russian">Гражданство</span></label>
+                        <input type="text" class="input-field pre-filled" data-field="citizenship" data-required="true" value="">
+                        <div class="field-instruction verify-instruction">Pre-filled by attorney - Please verify</div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Social Security Number (if any) / <span class="russian">Номер социального страхования (если имеется)</span></label>
+                        <input type="text" class="input-field" data-field="ssn" placeholder="XXX-XX-XXXX">
+                        <div class="field-instruction complete-instruction">Please complete if you have SSN</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CLIENT COMPLETION SECTION -->
+            <div class="section client-complete">
+                <div class="section-title">
+                    Criminal History and Immigration Violations / Аресты и нарушения
+                    <span class="section-badge badge-complete">Please Complete / Заполните</span>
+                </div>
+                
+                <div class="checkbox-section">
+                    <div class="checkbox-question">
+                        Have you EVER been arrested, cited, charged, or detained by any law enforcement officer?<br>
+                        <span class="russian">Арестовывались ли Вы когда-либо?</span>
+                    </div>
+                    <div class="checkbox-group">
+                        <div class="checkbox-option" onclick="window.formManager.toggleCheckbox(this, 'arrest')" data-group="arrest">
+                            <div class="checkbox" data-value="yes"></div>
+                            <span class="checkbox-label">YES / ДА</span>
+                        </div>
+                        <div class="checkbox-option" onclick="window.formManager.toggleCheckbox(this, 'arrest')" data-group="arrest">
+                            <div class="checkbox" data-value="no"></div>
+                            <span class="checkbox-label">NO / НЕТ</span>
+                        </div>
+                    </div>
+                    <div id="arrestDetailsSection" style="display: none;">
+                        <label class="form-label">If YES, provide details (date, place, charges, outcome) / <span class="russian">Если ДА, укажите детали (дата, место, обвинения)</span></label>
+                        <textarea class="text-area" data-field="arrestDetails" placeholder="Provide complete details including dates, locations, charges, and outcomes..."></textarea>
+                        <div class="field-instruction complete-instruction">CRITICAL: Complete disclosure required - failure to disclose may result in denial</div>
+                    </div>
+                </div>
+                
+                <div class="checkbox-section">
+                    <div class="checkbox-question">
+                        Have you EVER violated any immigration law of the United States?<br>
+                        <span class="russian">Нарушали ли Вы когда-либо иммиграционные законы США?</span>
+                    </div>
+                    <div class="checkbox-group">
+                        <div class="checkbox-option" onclick="window.formManager.toggleCheckbox(this, 'immigration')" data-group="immigration">
+                            <div class="checkbox" data-value="yes"></div>
+                            <span class="checkbox-label">YES / ДА</span>
+                        </div>
+                        <div class="checkbox-option" onclick="window.formManager.toggleCheckbox(this, 'immigration')" data-group="immigration">
+                            <div class="checkbox" data-value="no"></div>
+                            <span class="checkbox-label">NO / НЕТ</span>
+                        </div>
+                    </div>
+                    <div id="immigrationDetailsSection" style="display: none;">
+                        <label class="form-label">If YES, provide detailed explanation / <span class="russian">Если ДА, подробно объясните</span></label>
+                        <textarea class="text-area" data-field="immigrationDetails" placeholder="Provide detailed explanation of any immigration violations..."></textarea>
+                        <div class="field-instruction complete-instruction">CRITICAL: Complete disclosure required - failure to disclose may result in denial</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CLIENT COMPLETION SECTION -->
+            <div class="section client-complete">
+                <div class="section-title">
+                    Contact Information / Контактная информация
+                    <span class="section-badge badge-complete">Please Complete / Заполните</span>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Mobile Phone Number / <span class="russian">Номер мобильного телефона</span></label>
+                        <input type="tel" class="input-field" data-field="phoneNumber" data-required="true" placeholder="(XXX) XXX-XXXX">
+                        <div class="field-instruction complete-instruction">Primary contact number required</div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email Address / <span class="russian">Электронная почта</span></label>
+                        <input type="email" class="input-field" data-field="email" data-required="true" placeholder="client@email.com">
+                        <div class="field-instruction complete-instruction">Primary email for case communications</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="signature-section">
+                <div class="certification-text">
+                    <strong>CERTIFICATION / ПОДТВЕРЖДЕНИЕ:</strong> I certify under penalty of perjury that the information provided above is true and correct to the best of my knowledge and belief. I understand that any false information may result in denial of my application and may affect my future immigration benefits. / Я подтверждаю под страхом наказания за лжесвидетельство, что предоставленная выше информация является правдивой и точной, насколько мне известно. Я понимаю, что любая ложная информация может привести к отказу в моем заявлении и может повлиять на мои будущие иммиграционные льготы.
+                </div>
+                
+                <div class="signature-row">
+                    <div class="form-group">
+                        <label class="form-label">Who is completing this form? / <span class="russian">Кто заполняет эту форму?</span></label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-option" onclick="window.formManager.toggleFormCompleter(this, 'client')" data-group="completer">
+                                <div class="checkbox" data-value="client"></div>
+                                <span class="checkbox-label">Client is completing form personally / Клиент заполняет форму лично</span>
+                            </div>
+                            <div class="checkbox-option" onclick="window.formManager.toggleFormCompleter(this, 'other')" data-group="completer">
+                                <div class="checkbox" data-value="other"></div>
+                                <span class="checkbox-label">Someone else is completing for client / Кто-то другой заполняет за клиента</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Client completing personally -->
+                <div id="client-signature-section" class="signature-row" style="margin-top: 2rem; display: none;">
+                    <div class="form-group">
+                        <label class="form-label">Electronic Signature / <span class="russian">Электронная подпись - напишите полное имя</span></label>
+                        <input type="text" class="input-field" data-field="clientSignature" data-required-conditional="client" placeholder="Enter your full legal name">
+                    </div>
+                    <div class="form-group date-field">
+                        <label class="form-label">Date / <span class="russian">Дата</span></label>
+                        <input type="date" class="input-field" data-field="signatureDate" data-required-conditional="client">
+                    </div>
+                </div>
+                
+                <!-- Someone else completing for client -->
+                <div id="other-signature-section" class="signature-row" style="margin-top: 2rem; display: none;">
+                    <div class="form-group full-width">
+                        <label class="form-label">Form Completion Statement / <span class="russian">Заявление о заполнении формы</span></label>
+                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px; flex-wrap: wrap;">
+                            <span style="font-weight: 500;">I / Я</span>
+                            <input type="text" class="input-field" data-field="completerName" data-required-conditional="other" placeholder="Enter your full name" style="flex: 1; min-width: 200px; max-width: 300px;">
+                            <span style="font-weight: 500;">completed this form for / заполнил эту форму для</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <input type="text" class="input-field" data-field="clientFullName" data-required-conditional="other" placeholder="Client's full legal name" style="flex: 1; max-width: 400px;">
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="completer-signature-section" class="signature-row" style="margin-top: 1.5rem; display: none;">
+                    <div class="form-group">
+                        <label class="form-label">Completer's Signature / <span class="russian">Подпись заполняющего</span></label>
+                        <input type="text" class="input-field" data-field="completerSignature" data-required-conditional="other" placeholder="Enter your full name as signature">
+                    </div>
+                    <div class="form-group date-field">
+                        <label class="form-label">Date / <span class="russian">Дата</span></label>
+                        <input type="date" class="input-field" data-field="completerSignatureDate" data-required-conditional="other">
+                    </div>
+                </div>
+                
+                <div class="button-section">
+                    <button type="button" class="btn btn-primary" id="submitBtn" onclick="window.formManager.submitForm()">
+                        Submit Completed Form / Отправить заполненную форму
+                    </button>
+                    <button type="button" class="btn btn-secondary" onclick="window.formManager.printForm()">
+                        Print Form / Печать формы
+                    </button>
+                </div>
+            </div>
+
+            <div class="footer-notice">
+                This form is for information gathering purposes only. No attorney-client relationship is established by completion of this form.<br>
+                Данная форма предназначена только для сбора информации. Заполнение данной формы не устанавливает отношений адвокат-клиент.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /**
+         * Enhanced I-765 Form Management System - Production Ready
+         * Smotritsky Law Group - Client Intake Processing
+         * Version 3.0 - Optimized for reliability and user experience
+         */
+        
+        class FormManager {
+            constructor() {
+                // Configuration - UPDATE THIS URL WITH YOUR ACTUAL GOOGLE APPS SCRIPT WEB APP URL
+                this.FORM_BACKEND_URL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
+                
+                // Form state management
+                this.isSubmitting = false;
+                this.validationRules = {};
+                this.formData = {};
+                this.submissionToken = null;
+                
+                // Progress tracking
+                this.completionTracking = {
+                    totalFields: 0,
+                    completedFields: 0
+                };
+                
+                this.initializeForm();
+                this.setupValidation();
+                this.setupProgressTracking();
+                this.loadFormFromURL();
+            }
+            
+            /**
+             * Initialize form event listeners and basic setup
+             */
+            initializeForm() {
+                this.setupInputFormatting();
+                this.setupRealTimeValidation();
+                this.trackFormFields();
+                this.setDefaultDates();
+                
+                console.log('Enhanced I-765 Form Manager initialized successfully');
+            }
+            
+            /**
+             * Set default dates for signature fields
+             */
+            setDefaultDates() {
+                const today = new Date().toISOString().split('T')[0];
+                const dateFields = document.querySelectorAll('input[type="date"]');
+                dateFields.forEach(field => {
+                    if (!field.value) {
+                        field.value = today;
+                    }
+                });
+            }
+            
+            /**
+             * Setup comprehensive validation rules
+             */
+            setupValidation() {
+                this.validationRules = {
+                    lastName: { required: true, minLength: 1, maxLength: 50 },
+                    firstName: { required: true, minLength: 1, maxLength: 50 },
+                    streetAddress: { required: true, minLength: 5, maxLength: 100 },
+                    city: { required: true, minLength: 1, maxLength: 50 },
+                    state: { required: true, minLength: 2, maxLength: 50 },
+                    zipCode: { required: true, pattern: /^\d{5}(-\d{4})?$/ },
+                    dateOfBirth: { required: true, pattern: /^(0?[1-9]|1[0-2])\/(0?[1-9]|[12][0-9]|3[01])\/\d{4}$/ },
+                    countryOfBirth: { required: true, minLength: 2, maxLength: 50 },
+                    citizenship: { required: true, minLength: 2, maxLength: 50 },
+                    phoneNumber: { required: true, pattern: /^\([0-9]{3}\) [0-9]{3}-[0-9]{4}$/ },
+                    email: { required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/ }
+                };
+            }
+            
+            /**
+             * Setup form completion progress tracking
+             */
+            setupProgressTracking() {
+                const requiredFields = document.querySelectorAll('[data-required="true"]');
+                this.completionTracking.totalFields = requiredFields.length;
+                
+                // Update progress on field changes
+                document.addEventListener('input', () => this.updateProgress());
+                document.addEventListener('change', () => this.updateProgress());
+            }
+            
+            /**
+             * Update form completion progress bar
+             */
+            updateProgress() {
+                const requiredFields = document.querySelectorAll('[data-required="true"]');
+                let completedCount = 0;
+                
+                requiredFields.forEach(field => {
+                    if (field.value && field.value.trim() !== '') {
+                        completedCount++;
+                    }
+                });
+                
+                // Add checkbox completion tracking
+                const checkboxGroups = ['arrest', 'immigration', 'completer'];
+                checkboxGroups.forEach(group => {
+                    const checkedBox = document.querySelector(`[data-group="${group}"] .checkbox.checked`);
+                    if (checkedBox) {
+                        completedCount += 0.5;
+                    }
+                });
+                
+                const progressPercentage = Math.min((completedCount / (requiredFields.length + 1.5)) * 100, 100);
+                document.getElementById('progressFill').style.width = progressPercentage + '%';
+                
+                this.completionTracking.completedFields = completedCount;
+            }
+            
+            /**
+             * Setup input formatting for specific field types
+             */
+            setupInputFormatting() {
+                // Phone number formatting
+                const phoneInput = document.querySelector('[data-field="phoneNumber"]');
+                if (phoneInput) {
+                    phoneInput.addEventListener('input', (e) => this.formatPhoneNumber(e.target));
+                }
+                
+                // SSN formatting
+                const ssnInput = document.querySelector('[data-field="ssn"]');
+                if (ssnInput) {
+                    ssnInput.addEventListener('input', (e) => this.formatSSN(e.target));
+                }
+                
+                // Date formatting
+                const dateInput = document.querySelector('[data-field="dateOfBirth"]');
+                if (dateInput) {
+                    dateInput.addEventListener('input', (e) => this.formatDate(e.target));
+                }
+                
+                // ZIP code formatting
+                const zipInput = document.querySelector('[data-field="zipCode"]');
+                if (zipInput) {
+                    zipInput.addEventListener('input', (e) => this.formatZipCode(e.target));
+                }
+            }
+            
+            /**
+             * Format phone number input
+             */
+            formatPhoneNumber(input) {
+                let value = input.value.replace(/\D/g, '');
+                if (value.length >= 6) {
+                    value = `(${value.slice(0,3)}) ${value.slice(3,6)}-${value.slice(6,10)}`;
+                } else if (value.length >= 3) {
+                    value = `(${value.slice(0,3)}) ${value.slice(3)}`;
+                }
+                input.value = value;
+                
+                setTimeout(() => {
+                    if (input.classList.contains('error')) {
+                        this.validateField(input);
+                    }
+                }, 100);
+            }
+            
+            /**
+             * Format SSN input
+             */
+            formatSSN(input) {
+                let value = input.value.replace(/\D/g, '');
+                if (value.length >= 5) {
+                    value = `${value.slice(0,3)}-${value.slice(3,5)}-${value.slice(5,9)}`;
+                } else if (value.length >= 3) {
+                    value = `${value.slice(0,3)}-${value.slice(3)}`;
+                }
+                input.value = value;
+                
+                setTimeout(() => {
+                    if (input.classList.contains('error')) {
+                        this.validateField(input);
+                    }
+                }, 100);
+            }
+            
+            /**
+             * Format date input
+             */
+            formatDate(input) {
+                let value = input.value.replace(/\D/g, '');
+                if (value.length >= 4) {
+                    value = `${value.slice(0,2)}/${value.slice(2,4)}/${value.slice(4,8)}`;
+                } else if (value.length >= 2) {
+                    value = `${value.slice(0,2)}/${value.slice(2)}`;
+                }
+                input.value = value;
+                
+                setTimeout(() => {
+                    if (input.classList.contains('error')) {
+                        this.validateField(input);
+                    }
+                }, 100);
+            }
+            
+            /**
+             * Format ZIP code input
+             */
+            formatZipCode(input) {
+                let value = input.value.replace(/\D/g, '');
+                if (value.length > 5) {
+                    value = `${value.slice(0,5)}-${value.slice(5,9)}`;
+                }
+                input.value = value;
+                
+                setTimeout(() => {
+                    if (input.classList.contains('error')) {
+                        this.validateField(input);
+                    }
+                }, 100);
+            }
+            
+            /**
+             * Setup real-time validation feedback
+             */
+            setupRealTimeValidation() {
+                const inputs = document.querySelectorAll('.input-field, .text-area');
+                inputs.forEach(input => {
+                    input.addEventListener('blur', () => this.validateField(input));
+                    input.addEventListener('input', () => {
+                        if (input.classList.contains('error')) {
+                            this.validateField(input);
+                        }
+                    });
+                });
+            }
+            
+            /**
+             * Validate individual field
+             */
+            validateField(field) {
+                const fieldName = field.getAttribute('data-field');
+                const value = field.value.trim();
+                const isRequired = field.hasAttribute('data-required');
+                
+                let isValid = true;
+                let errorMessage = '';
+                
+                if (isRequired && !value) {
+                    isValid = false;
+                    errorMessage = 'This field is required';
+                } else if (value) {
+                    switch (fieldName) {
+                        case 'zipCode':
+                            if (!/^\d{5}(-?\d{4})?$/.test(value)) {
+                                isValid = false;
+                                errorMessage = 'Please enter a valid ZIP code (12345 or 12345-6789)';
+                            }
+                            break;
+                            
+                        case 'dateOfBirth':
+                            if (!/^(0?[1-9]|1[0-2])\/(0?[1-9]|[12][0-9]|3[01])\/\d{4}$/.test(value)) {
+                                isValid = false;
+                                errorMessage = 'Please enter date in MM/DD/YYYY format';
+                            } else {
+                                const parts = value.split('/');
+                                const month = parseInt(parts[0]);
+                                const day = parseInt(parts[1]);
+                                const year = parseInt(parts[2]);
+                                
+                                if (month < 1 || month > 12 || day < 1 || day > 31 || year < 1900 || year > new Date().getFullYear()) {
+                                    isValid = false;
+                                    errorMessage = 'Please enter a valid date';
+                                }
+                            }
+                            break;
+                            
+                        case 'phoneNumber':
+                            const cleanPhone = value.replace(/\D/g, '');
+                            if (cleanPhone.length !== 10) {
+                                isValid = false;
+                                errorMessage = 'Please enter a valid 10-digit phone number';
+                            }
+                            break;
+                            
+                        case 'email':
+                            if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value)) {
+                                isValid = false;
+                                errorMessage = 'Please enter a valid email address';
+                            }
+                            break;
+                            
+                        case 'clientSignature':
+                        case 'completerSignature':
+                            if (value.trim().split(/\s+/).length < 2) {
+                                isValid = false;
+                                errorMessage = 'Please enter your full name (first and last name)';
+                            }
+                            break;
+                            
+                        case 'ssn':
+                            if (value && !/^\d{3}-?\d{2}-?\d{4}$/.test(value)) {
+                                isValid = false;
+                                errorMessage = 'Please enter SSN in XXX-XX-XXXX format';
+                            }
+                            break;
+                    }
+                }
+                
+                if (isValid) {
+                    field.classList.remove('error');
+                    field.classList.add('success');
+                    this.clearFieldError(field);
+                } else {
+                    field.classList.add('error');
+                    field.classList.remove('success');
+                    this.showFieldError(field, errorMessage);
+                }
+                
+                return isValid;
+            }
+            
+            /**
+             * Show field-specific error message
+             */
+            showFieldError(field, message) {
+                const existingError = field.parentElement.querySelector('.error-instruction');
+                if (existingError) {
+                    existingError.textContent = message;
+                } else {
+                    const errorDiv = document.createElement('div');
+                    errorDiv.className = 'field-instruction error-instruction';
+                    errorDiv.textContent = message;
+                    field.parentElement.appendChild(errorDiv);
+                }
+            }
+            
+            /**
+             * Clear field error message
+             */
+            clearFieldError(field) {
+                const errorElement = field.parentElement.querySelector('.error-instruction');
+                if (errorElement) {
+                    errorElement.remove();
+                }
+            }
+            
+            /**
+             * Track all form fields for completion monitoring
+             */
+            trackFormFields() {
+                const allFields = document.querySelectorAll('[data-field]');
+                allFields.forEach(field => {
+                    const fieldName = field.getAttribute('data-field');
+                    this.completionTracking[fieldName] = false;
+                });
+            }
+            
+            /**
+             * Enhanced checkbox toggle with validation
+             */
+            toggleCheckbox(option, group) {
+                const groupOptions = document.querySelectorAll(`[data-group="${group}"]`);
+                groupOptions.forEach(opt => {
+                    opt.querySelector('.checkbox').classList.remove('checked');
+                });
+                
+                option.querySelector('.checkbox').classList.add('checked');
+                this.updateProgress();
+                
+                // Handle conditional field visibility
+                if (group === 'arrest') {
+                    const value = option.querySelector('.checkbox').getAttribute('data-value');
+                    const detailsSection = document.getElementById('arrestDetailsSection');
+                    const detailsField = document.querySelector('[data-field="arrestDetails"]');
+                    
+                    if (value === 'yes') {
+                        detailsSection.style.display = 'block';
+                        detailsField.setAttribute('data-required', 'true');
+                    } else {
+                        detailsSection.style.display = 'none';
+                        detailsField.removeAttribute('data-required');
+                        detailsField.value = '';
+                    }
+                }
+                
+                if (group === 'immigration') {
+                    const value = option.querySelector('.checkbox').getAttribute('data-value');
+                    const detailsSection = document.getElementById('immigrationDetailsSection');
+                    const detailsField = document.querySelector('[data-field="immigrationDetails"]');
+                    
+                    if (value === 'yes') {
+                        detailsSection.style.display = 'block';
+                        detailsField.setAttribute('data-required', 'true');
+                    } else {
+                        detailsSection.style.display = 'none';
+                        detailsField.removeAttribute('data-required');
+                        detailsField.value = '';
+                    }
+                }
+            }
+            
+            /**
+             * Enhanced form completer toggle with conditional validation
+             */
+            toggleFormCompleter(option, type) {
+                const completerOptions = document.querySelectorAll(`[data-group="completer"]`);
+                completerOptions.forEach(opt => {
+                    opt.querySelector('.checkbox').classList.remove('checked');
+                });
+                
+                option.querySelector('.checkbox').classList.add('checked');
+                
+                const clientSection = document.getElementById('client-signature-section');
+                const otherSection = document.getElementById('other-signature-section');
+                const completerSection = document.getElementById('completer-signature-section');
+                
+                // Clear all conditional requirements first
+                document.querySelectorAll('[data-required-conditional]').forEach(field => {
+                    field.removeAttribute('data-required');
+                });
+                
+                if (type === 'client') {
+                    clientSection.style.display = 'flex';
+                    otherSection.style.display = 'none';
+                    completerSection.style.display = 'none';
+                    
+                    document.querySelectorAll('[data-required-conditional="client"]').forEach(field => {
+                        field.setAttribute('data-required', 'true');
+                    });
+                } else if (type === 'other') {
+                    clientSection.style.display = 'none';
+                    otherSection.style.display = 'block';
+                    completerSection.style.display = 'flex';
+                    
+                    document.querySelectorAll('[data-required-conditional="other"]').forEach(field => {
+                        field.setAttribute('data-required', 'true');
+                    });
+                }
+                
+                this.updateProgress();
+            }
+            
+            /**
+             * Comprehensive form validation before submission
+             */
+            validateForm() {
+                const errors = [];
+                
+                const completerAnswer = document.querySelector('[data-group="completer"] .checkbox.checked')?.getAttribute('data-value');
+                
+                // Validate regular required fields
+                const requiredFields = document.querySelectorAll('[data-required="true"]:not([data-required-conditional])');
+                requiredFields.forEach(field => {
+                    if (!this.validateField(field)) {
+                        const label = field.parentElement.querySelector('.form-label');
+                        let fieldDisplayName = field.getAttribute('data-field');
+                        
+                        if (label) {
+                            fieldDisplayName = label.textContent.split('/')[0].trim();
+                        }
+                        
+                        errors.push(`${fieldDisplayName} is required and must be completed correctly`);
+                    }
+                });
+                
+                // Validate conditional signature fields
+                if (completerAnswer === 'client') {
+                    const clientSignature = document.querySelector('[data-field="clientSignature"]');
+                    const signatureDate = document.querySelector('[data-field="signatureDate"]');
+                    
+                    if (!clientSignature.value.trim()) {
+                        errors.push('Electronic Signature is required when completing form personally');
+                    } else if (clientSignature.value.trim().split(/\s+/).length < 2) {
+                        errors.push('Electronic Signature must include your full name (first and last name)');
+                    }
+                    
+                    if (!signatureDate.value.trim()) {
+                        errors.push('Signature Date is required');
+                    }
+                } else if (completerAnswer === 'other') {
+                    const requiredOtherFields = [
+                        { field: 'completerName', label: 'Completer Name' },
+                        { field: 'clientFullName', label: 'Client Full Name' },
+                        { field: 'completerSignature', label: 'Completer Signature' },
+                        { field: 'completerSignatureDate', label: 'Completer Signature Date' }
+                    ];
+                    
+                    requiredOtherFields.forEach(item => {
+                        const field = document.querySelector(`[data-field="${item.field}"]`);
+                        if (!field.value.trim()) {
+                            errors.push(`${item.label} is required when someone else completes the form`);
+                        }
+                    });
+                    
+                    const completerSig = document.querySelector('[data-field="completerSignature"]');
+                    if (completerSig.value.trim() && completerSig.value.trim().split(/\s+/).length < 2) {
+                        errors.push('Completer Signature must include full name (first and last name)');
+                    }
+                }
+                
+                // Validate checkbox selections
+                const requiredCheckboxGroups = ['arrest', 'immigration', 'completer'];
+                requiredCheckboxGroups.forEach(group => {
+                    const checkedBox = document.querySelector(`[data-group="${group}"] .checkbox.checked`);
+                    if (!checkedBox) {
+                        const groupNames = {
+                            'arrest': 'Criminal history question must be answered',
+                            'immigration': 'Immigration violation question must be answered',
+                            'completer': 'Form completion method must be selected'
+                        };
+                        errors.push(groupNames[group]);
+                    }
+                });
+                
+                // Validate conditional disclosure requirements
+                const arrestAnswer = document.querySelector('[data-group="arrest"] .checkbox.checked')?.getAttribute('data-value');
+                if (arrestAnswer === 'yes') {
+                    const arrestDetails = document.querySelector('[data-field="arrestDetails"]').value.trim();
+                    if (!arrestDetails) {
+                        errors.push('Arrest details must be provided when answering YES to criminal history');
+                    }
+                }
+                
+                const immigrationAnswer = document.querySelector('[data-group="immigration"] .checkbox.checked')?.getAttribute('data-value');
+                if (immigrationAnswer === 'yes') {
+                    const immigrationDetails = document.querySelector('[data-field="immigrationDetails"]').value.trim();
+                    if (!immigrationDetails) {
+                        errors.push('Immigration violation details must be provided when answering YES');
+                    }
+                }
+                
+                return errors;
+            }
+            
+            /**
+             * Display validation errors to user
+             */
+            displayValidationErrors(errors) {
+                const validationSummary = document.getElementById('validationSummary');
+                const validationList = document.getElementById('validationList');
+                
+                if (errors.length > 0) {
+                    validationList.innerHTML = '';
+                    errors.forEach(error => {
+                        const li = document.createElement('li');
+                        li.textContent = error;
+                        validationList.appendChild(li);
+                    });
+                    validationSummary.classList.add('show');
+                    validationSummary.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                } else {
+                    validationSummary.classList.remove('show');
+                }
+            }
+            
+            /**
+             * Collect all form data into structured object
+             */
+            collectFormData() {
+                const formData = {};
+                
+                // Collect input field data
+                const inputs = document.querySelectorAll('[data-field]');
+                inputs.forEach(input => {
+                    const fieldName = input.getAttribute('data-field');
+                    formData[fieldName] = input.value || '';
+                });
+                
+                // Collect checkbox data
+                const checkboxGroups = ['arrest', 'immigration', 'completer'];
+                checkboxGroups.forEach(group => {
+                    const checkedBox = document.querySelector(`[data-group="${group}"] .checkbox.checked`);
+                    formData[group + 'Answer'] = checkedBox ? checkedBox.getAttribute('data-value') : '';
+                });
+                
+                // Add metadata
+                formData.submissionTimestamp = new Date().toISOString();
+                formData.formVersion = '3.0-Production';
+                formData.userAgent = navigator.userAgent;
+                formData.submissionToken = this.submissionToken;
+                formData.completionPercentage = Math.round((this.completionTracking.completedFields / this.completionTracking.totalFields) * 100);
+                
+                return formData;
+            }
+            
+            /**
+             * Generate comprehensive email body for submission
+             */
+            generateEmailBody(formData) {
+                let emailBody = "═══════════════════════════════════════════════\n";
+                emailBody += "         I-765 CLIENT INTAKE FORM SUBMISSION\n";
+                emailBody += "              SMOTRITSKY LAW GROUP\n";
+                emailBody += "            305 Broadway Ste 210\n";
+                emailBody += "            New York, NY 10007\n";
+                emailBody += "═══════════════════════════════════════════════\n\n";
+                
+                emailBody += "FORM COMPLETION METADATA:\n";
+                emailBody += "─────────────────────────────────────────────\n";
+                emailBody += `Submission Date: ${new Date(formData.submissionTimestamp).toLocaleString()}\n`;
+                emailBody += `Form Version: ${formData.formVersion}\n`;
+                emailBody += `Completion Percentage: ${formData.completionPercentage}%\n`;
+                emailBody += `Form URL: ${window.location.href}\n\n`;
+                
+                emailBody += "ATTORNEY-VERIFIED PERSONAL INFORMATION:\n";
+                emailBody += "─────────────────────────────────────────────\n";
+                emailBody += `Last Name: ${formData.lastName}\n`;
+                emailBody += `First Name: ${formData.firstName}\n`;
+                emailBody += `Middle Name: ${formData.middleName || 'Not provided'}\n`;
+                emailBody += `Other Names Used: ${formData.otherNames || 'None specified'}\n\n`;
+                
+                emailBody += "CLIENT-COMPLETED ADDRESS INFORMATION:\n";
+                emailBody += "─────────────────────────────────────────────\n";
+                emailBody += `Street Address: ${formData.streetAddress}\n`;
+                emailBody += `Apartment/Unit: ${formData.apartment || 'Not specified'}\n`;
+                emailBody += `City: ${formData.city}\n`;
+                emailBody += `State: ${formData.state}\n`;
+                emailBody += `ZIP Code: ${formData.zipCode}\n\n`;
+                
+                emailBody += "ATTORNEY-VERIFIED BIRTH & CITIZENSHIP:\n";
+                emailBody += "─────────────────────────────────────────────\n";
+                emailBody += `Date of Birth: ${formData.dateOfBirth || 'Not pre-filled'}\n`;
+                emailBody += `Country of Birth: ${formData.countryOfBirth || 'Not pre-filled'}\n`;
+                emailBody += `Citizenship: ${formData.citizenship || 'Not pre-filled'}\n`;
+                emailBody += `Social Security Number: ${formData.ssn || 'Not provided'}\n\n`;
+                
+                emailBody += "CLIENT-DISCLOSED CRIMINAL/IMMIGRATION HISTORY:\n";
+                emailBody += "─────────────────────────────────────────────\n";
+                emailBody += `Ever been arrested: ${formData.arrestAnswer.toUpperCase()}\n`;
+                if (formData.arrestAnswer === 'yes' && formData.arrestDetails) {
+                    emailBody += `Arrest Details: ${formData.arrestDetails}\n`;
+                }
+                emailBody += `Immigration law violations: ${formData.immigrationAnswer.toUpperCase()}\n`;
+                if (formData.immigrationAnswer === 'yes' && formData.immigrationDetails) {
+                    emailBody += `Immigration Violation Details: ${formData.immigrationDetails}\n`;
+                }
+                emailBody += "\n";
+                
+                emailBody += "CLIENT CONTACT INFORMATION:\n";
+                emailBody += "─────────────────────────────────────────────\n";
+                emailBody += `Mobile Phone: ${formData.phoneNumber}\n`;
+                emailBody += `Email: ${formData.email}\n\n`;
+                
+                // Add signature section based on completion type
+                if (formData.completerAnswer === 'client') {
+                    emailBody += "ELECTRONIC SIGNATURE - CLIENT COMPLETED:\n";
+                    emailBody += "─────────────────────────────────────────────\n";
+                    emailBody += `Client Electronic Signature: ${formData.clientSignature}\n`;
+                    emailBody += `Date Signed: ${formData.signatureDate}\n`;
+                } else if (formData.completerAnswer === 'other') {
+                    emailBody += "FORM COMPLETION CERTIFICATION:\n";
+                    emailBody += "─────────────────────────────────────────────\n";
+                    emailBody += `I ${formData.completerName} completed this form for ${formData.clientFullName}\n`;
+                    emailBody += `Completer's Signature: ${formData.completerSignature}\n`;
+                    emailBody += `Date Signed: ${formData.completerSignatureDate}\n`;
+                }
+                
+                emailBody += `Form completed on: ${new Date().toLocaleString()}\n\n`;
+                
+                emailBody += "═══════════════════════════════════════════════\n";
+                if (formData.completerAnswer === 'client') {
+                    emailBody += "Client has certified under penalty of perjury that\n";
+                    emailBody += "the information provided is true and correct.\n";
+                } else if (formData.completerAnswer === 'other') {
+                    emailBody += "Form completer has certified that information\n";
+                    emailBody += "was completed on behalf of the named client.\n";
+                }
+                emailBody += "Form submitted via Enhanced Smotritsky Law Group I-765 Portal\n";
+                emailBody += "═══════════════════════════════════════════════";
+                
+                return emailBody;
+            }
+            
+            /**
+             * Show status message to user
+             */
+            showStatusMessage(message, type = 'info', duration = 3000) {
+                const indicator = document.getElementById('statusIndicator');
+                indicator.textContent = message;
+                indicator.className = `status-indicator ${type} show`;
+                
+                setTimeout(() => {
+                    indicator.classList.remove('show');
+                }, duration);
+            }
+            
+            /**
+             * Show loading overlay
+             */
+            showLoadingOverlay(show = true) {
+                const overlay = document.getElementById('loadingOverlay');
+                if (show) {
+                    overlay.classList.add('show');
+                } else {
+                    overlay.classList.remove('show');
+                }
+            }
+            
+            /**
+             * Enhanced form submission with comprehensive validation and backend integration
+             */
+            async submitForm() {
+                if (this.isSubmitting) return;
+                
+                this.isSubmitting = true;
+                const submitBtn = document.getElementById('submitBtn');
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Validating Form...';
+                
+                try {
+                    // Show loading overlay
+                    this.showLoadingOverlay(true);
+                    
+                    // Comprehensive validation
+                    const validationErrors = this.validateForm();
+                    
+                    if (validationErrors.length > 0) {
+                        this.displayValidationErrors(validationErrors);
+                        this.showStatusMessage('Please correct form errors before submitting', 'error');
+                        throw new Error('Form validation failed');
+                    }
+                    
+                    // Clear any previous validation errors
+                    this.displayValidationErrors([]);
+                    
+                    // Collect form data
+                    const formData = this.collectFormData();
+                    
+                    // Update button text
+                    submitBtn.textContent = 'Generating Email...';
+                    
+                    // Generate email
+                    const emailBody = this.generateEmailBody(formData);
+                    const subjectLine = `Form I-765 - ${formData.lastName}, ${formData.firstName}`;
+                    const attorneyEmail = 'arturlawny@gmail.com';
+                    
+                    // Create mailto link with proper encoding
+                    const mailtoLink = `mailto:${attorneyEmail}?subject=${encodeURIComponent(subjectLine)}&body=${encodeURIComponent(emailBody)}`;
+                    
+                    // Hide loading overlay
+                    this.showLoadingOverlay(false);
+                    
+                    // Open email client
+                    window.location.href = mailtoLink;
+                    
+                    // Show success message
+                    this.showSuccessMessage();
+                    
+                    // Log successful submission
+                    console.log('Form submitted successfully:', { 
+                        formData, 
+                        emailRecipient: attorneyEmail,
+                        submissionTime: new Date().toISOString()
+                    });
+                    
+                } catch (error) {
+                    console.error('Form submission error:', error);
+                    this.showLoadingOverlay(false);
+                    this.showStatusMessage('Form submission failed. Please check errors and try again.', 'error');
+                } finally {
+                    this.isSubmitting = false;
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Submit Completed Form / Отправить заполненную форму';
+                }
+            }
+            
+            /**
+             * Show success message after form submission
+             */
+            showSuccessMessage() {
+                const message = `
+Form submitted successfully! Your email client will open with the completed form data.
+
+NEXT STEPS:
+1. Review the email content for accuracy
+2. Send the email to complete your submission
+3. You will receive a confirmation from our office within 24 hours
+
+Форма успешно отправлена! Ваш почтовый клиент откроется с данными формы.
+
+СЛЕДУЮЩИЕ ШАГИ:
+1. Проверьте содержание email на точность
+2. Отправьте email для завершения подачи
+3. Вы получите подтверждение от нашего офиса в течение 24 часов
+                `;
+                alert(message);
+                this.showStatusMessage('Form submitted successfully!', 'success', 5000);
+            }
+            
+            /**
+             * Enhanced print form functionality
+             */
+            printForm() {
+                try {
+                    document.body.classList.add('printing');
+                    this.preparePrintData();
+                    
+                    setTimeout(() => {
+                        try {
+                            window.print();
+                            setTimeout(() => {
+                                document.body.classList.remove('printing');
+                            }, 1000);
+                        } catch (printError) {
+                            console.error('Print execution error:', printError);
+                            this.showPrintErrorMessage();
+                            document.body.classList.remove('printing');
+                        }
+                    }, 300);
+                    
+                } catch (error) {
+                    console.error('Print function error:', error);
+                    this.showPrintErrorMessage();
+                    document.body.classList.remove('printing');
+                }
+            }
+            
+            /**
+             * Prepare form data for optimal printing display
+             */
+            preparePrintData() {
+                const inputFields = document.querySelectorAll('.input-field, .text-area');
+                inputFields.forEach(field => {
+                    if (field.value) {
+                        field.setAttribute('data-print-value', field.value);
+                    }
+                });
+                
+                const checkedBoxes = document.querySelectorAll('.checkbox.checked');
+                checkedBoxes.forEach(box => {
+                    box.setAttribute('data-print-checked', 'true');
+                });
+            }
+            
+            /**
+             * Show print error message to user
+             */
+            showPrintErrorMessage() {
+                const message = `
+Print function encountered an issue. Please try one of these alternatives:
+
+1. Use browser print: Press Ctrl+P (PC) or Cmd+P (Mac)
+2. Right-click on page and select "Print"
+3. Use browser menu: File → Print
+
+Функция печати столкнулась с проблемой. Попробуйте один из этих вариантов:
+
+1. Используйте печать браузера: Нажмите Ctrl+P (ПК) или Cmd+P (Mac)
+2. Щелкните правой кнопкой мыши и выберите "Печать"
+3. Используйте меню браузера: Файл → Печать
+                `;
+                
+                alert(message);
+            }
+            
+            /**
+             * Load pre-filled data from URL parameters
+             */
+            loadFormFromURL() {
+                const urlParams = new URLSearchParams(window.location.search);
+                
+                // Extract token
+                this.submissionToken = urlParams.get('token');
+                if (this.submissionToken) {
+                    console.log('Form accessed with token:', this.submissionToken.substring(0, 8) + '...');
+                }
+                
+                // Pre-fill form fields from URL parameters
+                const fieldMappings = {
+                    'lastName': 'lastName',
+                    'firstName': 'firstName', 
+                    'middleName': 'middleName',
+                    'dateOfBirth': 'dateOfBirth',
+                    'countryOfBirth': 'countryOfBirth',
+                    'citizenship': 'citizenship',
+                    'otherNames': 'otherNames'
+                };
+                
+                Object.entries(fieldMappings).forEach(([param, field]) => {
+                    const value = urlParams.get(param);
+                    if (value) {
+                        const inputElement = document.querySelector(`[data-field="${field}"]`);
+                        if (inputElement) {
+                            inputElement.value = decodeURIComponent(value);
+                        }
+                    }
+                });
+                
+                // Update progress after pre-filling
+                setTimeout(() => {
+                    this.updateProgress();
+                }, 100);
+            }
+        }
+        
+        // Initialize the enhanced form manager when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            window.formManager = new FormManager();
+            console.log('Enhanced I-765 Form Management System loaded successfully');
+        });
+        
+        // Prevent form data loss on page unload
+        window.addEventListener('beforeunload', function(e) {
+            const formData = window.formManager ? window.formManager.collectFormData() : null;
+            const hasData = formData && Object.values(formData).some(value => 
+                typeof value === 'string' && value.trim() !== ''
+            );
+            
+            if (hasData && !window.formManager?.isSubmitting) {
+                const message = 'You have unsaved changes. Are you sure you want to leave?';
+                e.returnValue = message;
+                return message;
+            }
+        });
+        
+        // Utility functions for external access
+        window.I765FormUtils = {
+            getFormData: () => window.formManager?.collectFormData(),
+            validateForm: () => window.formManager?.validateForm(),
+            resetForm: () => location.reload(),
+            printForm: () => window.formManager?.printForm()
+        };
+    </script>
+</body>
+</html>
